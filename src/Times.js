@@ -4,17 +4,25 @@ export const Times = (props) => {
   const times = props.times;
   const sortedTimes = useMemo(() => {
     const result = [...times];
-    result.sort();
+    result.sort((aTime, bTime) => bTime.ms - aTime.ms);
     return result;
-  }, [times])
+  }, [times]);
 
   if (times.length === 0) {
-    return <div>No times... yet 👀</div>
+    return <div>No times... yet 👀</div>;
   }
 
   return (
     <ul class="list-group">
-      {sortedTimes.map((time, index) => <li class="list-group-item">{time}ms{index === 0 && ' ⭐️'}</li>)}
+      {sortedTimes.map((time, index) => (
+        <li class="list-group-item">
+          {time.ms}ms{index === 0 && ' ⭐️'}
+          <br />
+          <small>
+            <em>{time.recordedAt.toString()}</em>
+          </small>
+        </li>
+      ))}
     </ul>
   );
 };

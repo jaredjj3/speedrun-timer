@@ -1,4 +1,4 @@
-class Time {
+export class Time {
   static record(ms) {
     return new Time(ms, new Date());
   }
