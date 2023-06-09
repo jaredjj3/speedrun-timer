@@ -4,7 +4,7 @@ export const Times = (props) => {
   const times = props.times;
 
   if (times.length === 0) {
-    return <div>No times!</div>
+    return <div>No times... yet 👀</div>
   }
 
   return (
