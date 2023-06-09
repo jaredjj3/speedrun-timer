@@ -4,7 +4,7 @@ export const Times = (props) => {
   const times = props.times;
   const sortedTimes = useMemo(() => {
     const result = [...times];
-    result.sort((aTime, bTime) => bTime.ms - aTime.ms);
+    result.sort((aTime, bTime) => aTime.ms - bTime.ms);
     return result;
   }, [times]);
 
