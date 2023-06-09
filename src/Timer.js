@@ -4,9 +4,17 @@ export const Timer = () => {
   return (
     <div>
       <h2>TODO: Current time</h2>
-      <button>Start</button>
-      <button>Stop</button>
-      <button>Reset</button>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-success">
+          start
+        </button>
+        <button type="button" class="btn btn-danger">
+          stop
+        </button>
+        <button type="button" class="btn btn-warning">
+          reset
+        </button>
+      </div>
     </div>
   );
 };
