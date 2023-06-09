@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Timer = () => {
+  const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
+
   return (
     <div>
-      <h2>TODO: Current time</h2>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-success">
+      <h2>{elapsedTimeMs} ms</h2>
+      <div className="btn-group" role="group" aria-label="Basic example">
+        <button type="button" className="btn btn-success">
           start
         </button>
-        <button type="button" class="btn btn-danger">
+        <button type="button" className="btn btn-danger">
           stop
         </button>
-        <button type="button" class="btn btn-warning">
+        <button type="button" className="btn btn-warning">
           reset
         </button>
       </div>
