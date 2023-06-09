@@ -13,7 +13,7 @@ export default function App() {
 
       <hr />
 
-      <Times />
+      <Times times={times} />
     </div>
   );
 }

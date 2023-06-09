@@ -1,11 +1,15 @@
 import React from 'react';
 
-export const Times = () => (
-  <ul class="list-group">
-    <li class="list-group-item">t0</li>
-    <li class="list-group-item">t1</li>
-    <li class="list-group-item">t2</li>
-    <li class="list-group-item">t3</li>
-    <li class="list-group-item">t4</li>
-  </ul>
-);
+export const Times = (props) => {
+  const times = props.times;
+
+  if (times.length === 0) {
+    return <div>No times!</div>
+  }
+
+  return (
+    <ul class="list-group">
+      {times.map((time) => <li class="list-group-item">{time}ms</li>)}
+    </ul>
+  );
+};
