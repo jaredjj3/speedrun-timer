@@ -1,19 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Time } from './Time';
 
+// https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+const raf = window.requestAnimationFrame;
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelAnimationFrame
+const caf = window.cancelAnimationFrame;
+
+/**
+ * Keeps track of the current time keeping.
+ */
 export const Timer = (props) => {
-  const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
   const onStop = props.onStop;
 
+  const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
+  const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    if (!running) {
+      return;
+    }
+
+    const startMs = Date.now();
+
+    let rafHandle = 0;
+
+    const updateTime = () => {
+      const endMs = Date.now();
+      setElapsedTimeMs(endMs - startMs);
+      rafHandle = raf(updateTime);
+    };
+
+    updateTime();
+    
+    return () => {
+      caf(rafHandle);
+    };
+  }, [running]);
+
   const onStartClick = () => {
-    console.log('onStartClick');
+    setRunning(true);
   };
 
   const onStopClick = () => {
-    console.log('onStopClick');
-  };
-
-  const onResetClick = () => {
-    console.log('onResetClick');
+    setRunning(false);
+    onStop(Time.record(elapsedTimeMs));
+    setElapsedTimeMs(0);
   };
 
   return (
@@ -29,13 +61,6 @@ export const Timer = (props) => {
         </button>
         <button type="button" className="btn btn-danger" onClick={onStopClick}>
           stop
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning"
-          onClick={onResetClick}
-        >
-          reset
         </button>
       </div>
     </div>

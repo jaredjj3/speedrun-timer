@@ -1,7 +1,13 @@
 import React, { useMemo } from 'react';
 
+/**
+ * Renders the times given, and displays them in ascending order.
+ *
+ * Appends a ⭐️ to the fastest time.
+ */
 export const Times = (props) => {
   const times = props.times;
+
   const sortedTimes = useMemo(() => {
     const result = [...times];
     result.sort((aTime, bTime) => aTime.ms - bTime.ms);
