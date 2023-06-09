@@ -5,7 +5,7 @@ import { Times } from './Times';
 import { Time } from './Time';
 
 export default function App() {
-  const [times, setTimes] = useState([Time.record(1), Time.record(2)]);
+  const [times, setTimes] = useState([]);
 
   return (
     <div className="container">
