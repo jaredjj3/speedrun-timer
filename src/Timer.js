@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-export const Timer = () => {
+export const Timer = (props) => {
   const [elapsedTimeMs, setElapsedTimeMs] = useState(0);
+  const onStop = props.onStop;
 
   return (
     <div>

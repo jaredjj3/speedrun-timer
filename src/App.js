@@ -7,10 +7,14 @@ import { Time } from './Time';
 export default function App() {
   const [times, setTimes] = useState([]);
 
+  const onStop = (time) => {
+    setTimes((times) => [...times, time]);
+  };
+
   return (
     <div className="container">
       <h1>Speedrun Timer</h1>
-      <Timer />
+      <Timer onStop={onStop} />
 
       <hr />
 
