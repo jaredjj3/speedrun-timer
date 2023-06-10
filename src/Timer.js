@@ -32,7 +32,7 @@ export const Timer = (props) => {
     };
 
     updateTime();
-    
+
     return () => {
       caf(rafHandle);
     };
@@ -51,7 +51,7 @@ export const Timer = (props) => {
   return (
     <div>
       <h2>{elapsedTimeMs} ms</h2>
-      <div className="btn-group" role="group" aria-label="Basic example">
+      {!running && (
         <button
           type="button"
           className="btn btn-success"
@@ -59,10 +59,12 @@ export const Timer = (props) => {
         >
           start
         </button>
+      )}
+      {running && (
         <button type="button" className="btn btn-danger" onClick={onStopClick}>
           stop
         </button>
-      </div>
+      )}
     </div>
   );
 };
